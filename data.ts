@@ -1,5 +1,5 @@
 import {Breakpoint,User} from './interfaces'
-export const  breakpoints: Breakpoint[]=[
+export const  Breakpoints: Breakpoint[]=[
     {
         position:14,
         move:{
@@ -79,4 +79,14 @@ export const Users :User[]=[
         position:0,
         final:false,
     },
+    {
+        name:'veeart',
+        position:0,
+        final:false,
+    },
+    {
+        name:'yfbp',
+        position:0,
+        final:false,
+    }
 ]
