@@ -1,38 +1,15 @@
-import { breakpoints } from "./data";
-const countSquares: number = 25;
-let positionGame: number = 0;
-let nextPositionMove: number = 0;
-let countGames:number=0;
-let initGame = true;
+import {initGame} from './ladder-game'
+import{calculatedSquares,generatedPlayers,getRandomNumber}from './helper'
+import {Breakpoints} from './data'
+import { User } from './interfaces';
+const minGames:number=3;
+const maxGames:number=5;
+const minPlayers:number=1;
+const maxPlayers:number=5;
+const countSquares:number= calculatedSquares(40,30);
+const randomCountPlayers=getRandomNumber(maxPlayers,minPlayers);
+const UserPlayers:User[]=generatedPlayers(randomCountPlayers)
 
-while (positionGame <= countSquares) {
-  countGames++;
-  console.log('Juego # ',countGames)
-  let dado = getRandomNumber();
-  console.log("Dado arroja ", dado);
+initGame(countSquares,minGames,maxGames,Breakpoints,UserPlayers);
 
-  nextPositionMove = initGame ? dado : positionGame + dado;
 
-  let moveBreakpoint = breakpoints.filter(
-    (breakpoint) => breakpoint.position === nextPositionMove
-  );
-
-  positionGame =
-    moveBreakpoint.length > 0
-      ? moveBreakpoint[0].move.steps + nextPositionMove
-      : nextPositionMove;
-
-  let message =
-    moveBreakpoint.length > 0 && positionGame < 25
-      ? `Jugador ${moveBreakpoint[0].move.type} a cuadro ${positionGame}`
-      : `Jugador avanza al cuadro ${positionGame <= 25 ? positionGame : 25}`;
-  console.log(message);
-  initGame = false;
-}
-if(positionGame>25){
-    console.log('Fin del juego ')
-}
-
-function getRandomNumber(): number {
-  return Math.floor(Math.random() * (6 - 1 + 1) + 1);
-}

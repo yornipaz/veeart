@@ -2,7 +2,7 @@
 
 ## Tecnologia implementadas 
 - Nodejs
--Typescript 
+- Typescript 
  
 ## intruciones para correr la app
 - Clonar el repositorio en el computador
